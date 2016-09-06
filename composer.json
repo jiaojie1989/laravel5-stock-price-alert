@@ -1,0 +1,13 @@
+{
+    "name": "jiaojie/laravel5-stock-price-alert",
+    "description": "Stock price alert module for laravel 5, made by SINA finance client api team.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "JIAO Jie",
+            "email": "thomasjiao@vip.qq.com"
+        }
+    ],
+    "require": {}
+}
