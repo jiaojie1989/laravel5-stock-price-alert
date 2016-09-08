@@ -29,6 +29,5 @@
         "psr-4": {
             "Jiaojie\\Laravel\\StockAlert\\Tests\\": "tests/"
         }
-    },
-    "minimum-stability": "dev"
+    }
 }
