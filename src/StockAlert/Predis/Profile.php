@@ -43,7 +43,8 @@ class Profile extends RedisVersion300 {
 
     protected function getPriceAlertCommands() {
         return [
-            "PATEST" => '\Predis\Command\StringGet',
+//            "PATEST" => '\Predis\Command\StringGet',
+            "PATEST" => "\\Jiaojie\\Laravel\\StockAlert\\Predis\\Commands\\Test",
         ];
     }
 
