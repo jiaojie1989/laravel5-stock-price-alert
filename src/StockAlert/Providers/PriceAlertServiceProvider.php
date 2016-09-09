@@ -11,11 +11,11 @@
  *    visit our official website http://app.finance.sina.com.cn/.
  */
 
-namespace Jiaojie\Laravel\StockAlert;
+namespace Jiaojie\Laravel\StockAlert\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Config;
-use Jiaojie\Laravel\StockAlert\Predis\Options;
+use Jiaojie\Laravel\StockAlert\Predis\Profile;
 
 /**
  * Description of PriceAlertServiceProvider
@@ -36,10 +36,10 @@ class PriceAlertServiceProvider extends ServiceProvider {
      */
     public function boot() {
         if (static::$booted === false) {
-            if (!Config::get("database.redis.options")) {
-                Config::set("database.redis.options", new Options());
+            if (!Config::get("database.redis.options.profile")) {
+                Config::set("database.redis.options.profile", new Profile());
             } else {
-                throw new \UnexpectedValueException("Configuration for `database.redis.options` has been defined !");
+                throw new \UnexpectedValueException("Configuration for `database.redis.options.profile` has been defined !");
             }
             if ("cli" === php_sapi_name()) {
                 static::$booted = true;
