@@ -15,6 +15,7 @@ namespace Jiaojie\Laravel\StockAlert;
 
 use Illuminate\Support\ServiceProvider;
 use Config;
+use Jiaojie\Laravel\StockAlert\Predis\Options;
 
 /**
  * Description of PriceAlertServiceProvider
@@ -36,9 +37,7 @@ class PriceAlertServiceProvider extends ServiceProvider {
     public function boot() {
         if (static::$booted === false) {
             if (!Config::get("database.redis.options")) {
-                Config::set("database.redis.options", function() {
-                    
-                });
+                Config::set("database.redis.options", new Options());
             } else {
                 throw new \UnexpectedValueException("Configuration for `database.redis.options` has been defined !");
             }
