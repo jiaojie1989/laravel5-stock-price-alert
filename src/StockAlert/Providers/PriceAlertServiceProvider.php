@@ -35,9 +35,9 @@ class PriceAlertServiceProvider extends ServiceProvider {
      * @throws \UnexpectedValueException
      */
     public function boot() {
-        if (!Config::get("database.redis.options.profile")) {
-            Config::set("database.redis.options.profile", new Profile());
-        }
+//        if (!Config::get("database.redis.options.profile")) {
+//            Config::set("database.redis.options.profile", new Profile());
+//        }
 //        if (static::$booted === false) {
 //            if (!Config::get("database.redis.options.profile")) {
 //                Config::set("database.redis.options.profile", new Profile());
