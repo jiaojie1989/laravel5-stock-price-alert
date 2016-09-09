@@ -23,17 +23,19 @@ use Predis\Configuration\Options as PredisOptions;
  * @since 2016-09-08 18:06 (CST) 
  * @version 0.1
  * @description 
+ * @deprecated since version 0.1
  */
 class Options extends PredisOptions {
 
     protected function getHandlers() {
-        return array_merge(parent::getHandlers(), $this->getPriceAlertHandler());
-    }
-
-    protected function getPriceAlertHandler() {
-        return [
-            "MYTEST" => "\\Predis\\Commands\\StringGet",
-        ];
+        return array(
+            'cluster' => 'Predis\Configuration\ClusterOption',
+            'connections' => 'Predis\Configuration\ConnectionFactoryOption',
+            'exceptions' => 'Predis\Configuration\ExceptionsOption',
+            'prefix' => 'Predis\Configuration\PrefixOption',
+            'profile' => 'Jiaojie\Laravel\StockAlert\Predis\ProfileOption',
+            'replication' => 'Predis\Configuration\ReplicationOption',
+        );
     }
 
 }

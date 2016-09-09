@@ -24,6 +24,7 @@ use Predis\Profile\Factory;
  * @since 2016-09-09 11:38 (CST) 
  * @version 0.1
  * @description 
+ * @deprecated since version 0.1
  */
 class ProfileOption extends PredisProfileOption {
 
