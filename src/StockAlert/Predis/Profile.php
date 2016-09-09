@@ -47,4 +47,8 @@ class Profile extends RedisVersion300 {
         ];
     }
 
+    public static function __set_state($array) {
+        return new static;
+    }
+
 }

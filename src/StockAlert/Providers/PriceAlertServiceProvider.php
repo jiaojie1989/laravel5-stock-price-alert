@@ -35,16 +35,19 @@ class PriceAlertServiceProvider extends ServiceProvider {
      * @throws \UnexpectedValueException
      */
     public function boot() {
-        if (static::$booted === false) {
-            if (!Config::get("database.redis.options.profile")) {
-                Config::set("database.redis.options.profile", new Profile());
-            } else {
-                throw new \UnexpectedValueException("Configuration for `database.redis.options.profile` has been defined !");
-            }
-            if ("cli" === php_sapi_name()) {
-                static::$booted = true;
-            }
+        if (!Config::get("database.redis.options.profile")) {
+            Config::set("database.redis.options.profile", new Profile());
         }
+//        if (static::$booted === false) {
+//            if (!Config::get("database.redis.options.profile")) {
+//                Config::set("database.redis.options.profile", new Profile());
+//            } else {
+//                throw new \UnexpectedValueException("Configuration for `database.redis.options.profile` has been defined !");
+//            }
+//            if ("cli" === php_sapi_name()) {
+//                static::$booted = true;
+//            }
+//        }
     }
 
     public function register() {
