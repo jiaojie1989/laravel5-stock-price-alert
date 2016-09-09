@@ -29,6 +29,10 @@ class PriceAlertServiceProvider extends ServiceProvider {
 
     protected static $booted = false;
 
+    /**
+     * 
+     * @throws \UnexpectedValueException
+     */
     public function boot() {
         if (static::$booted === false) {
             if (!Config::get("database.redis.options")) {
