@@ -14,7 +14,7 @@
 namespace Jiaojie\Laravel\StockAlert\Predis;
 
 //use Closure;
-use Predis\Configuration\OptionInterface;
+use Predis\Profile\RedisVersion300;
 
 /**
  * Description of Profile
@@ -25,16 +25,26 @@ use Predis\Configuration\OptionInterface;
  * @version 0.1
  * @description 
  */
-class Profile {
+class Profile extends RedisVersion300 {
 
-    public function __construct() {
-        
+    /**
+     * {@inheritdoc}
+     */
+    public function getVersion() {
+        return '3.0-priceAlert';
     }
 
-    public function __invoke(OptionInterface $options) {
-        $profile = $options->getDefault('profile');
-        $profile->defineCommand('hahaha', '\\Predis\\Command\\StringGet');
-        return $profile;
+    /**
+     * {@inheritdoc}
+     */
+    public function getSupportedCommands() {
+        return array_merge(parent::getSupportedCommands(), $this->getPriceAlertCommands());
+    }
+
+    protected function getPriceAlertCommands() {
+        return [
+            "PATEST" => '\Predis\Command\StringGet',
+        ];
     }
 
 }
