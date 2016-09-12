@@ -41,14 +41,24 @@ class Profile extends RedisVersion300 {
         return array_merge(parent::getSupportedCommands(), $this->getPriceAlertCommands());
     }
 
+    /**
+     * Price alert redis-lua commands
+     * @return array
+     */
     protected function getPriceAlertCommands() {
         return [
-//            "PATEST" => '\Predis\Command\StringGet',
-            "PATEST" => "\\Jiaojie\\Laravel\\StockAlert\\Predis\\Commands\\Test",
+            "TEST" => "\\Jiaojie\\Laravel\\StockAlert\\Predis\\Commands\\Test",
+            "DISTRIBUTEHQPRICE" => "\\Jiaojie\\Laravel\\StockAlert\\Predis\\Commands\\DistriHqMsg",
+            "COMPAREPRICE" => "\\Jiaojie\\Laravel\\StockAlert\\Predis\\Commands\\DistriHqMsg",
         ];
     }
 
-    public static function __set_state($array) {
+    /**
+     * Revert from var_export()
+     * @param array $array
+     * @return Jiaojie\Laravel\StockAlert\Predis\Profile
+     */
+    public static function __set_state($array = []) {
         return new static;
     }
 
